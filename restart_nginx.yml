@@ -1,0 +1,10 @@
+- name: Restart nginx docker container
+  hosts: localhost
+  become: true
+  connection: local
+  tasks:
+    - name: Ensure webserver container is started (restart if exists)
+      community.docker.docker_container:
+        name: webserver
+        state: started
+        restart: true
